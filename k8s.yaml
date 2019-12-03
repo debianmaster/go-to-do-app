@@ -3,6 +3,49 @@ apiVersion: v1
 kind: Service
 metadata:
   creationTimestamp: null
+  name: apiserver
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: apiserver
+status:
+  loadBalancer: {}
+---
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: apiserver
+  name: apiserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: apiserver
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: apiserver
+    spec:
+      containers:
+      - image: biqmind/todo-api
+        name: apiserver
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
   name: mongo
 spec:
   ports:
@@ -11,8 +54,6 @@ spec:
     targetPort: 27017
   selector:
     run: mongo
-status:
-  loadBalancer: {}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -46,7 +87,6 @@ spec:
       - name: image-data
         persistentVolumeClaim:
           claimName: image-data
-status: {}
 ---
 apiVersion: v1
 kind: Service
@@ -60,8 +100,6 @@ spec:
     targetPort: 3000
   selector:
     run: todo-app
-status:
-  loadBalancer: {}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -75,7 +113,6 @@ spec:
   selector:
     matchLabels:
       run: todo-app
-  strategy: {}
   template:
     metadata:
       creationTimestamp: null
@@ -87,8 +124,6 @@ spec:
         name: todo-app
         ports:
         - containerPort: 3000
-        resources: {}
-status: {}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -96,7 +131,7 @@ metadata:
   name: hw-ingress
 spec:
   rules:
-  - host: todo.127.0.0.1.nip.io
+  - host: todo.harsh.stg.cape.sh
     http:
       paths:
       - backend:
