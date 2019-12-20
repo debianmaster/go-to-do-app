@@ -131,7 +131,7 @@ metadata:
   name: hw-ingress
 spec:
   rules:
-  - host: todo.harsh.stg.cape.sh
+  - host: todo.127.0.0.1.nip.io
     http:
       paths:
       - backend:
@@ -146,6 +146,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
+  torageClassName: example-nfs
   resources:
     requests:
       storage: 1Gi
