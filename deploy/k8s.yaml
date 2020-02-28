@@ -23,7 +23,7 @@ metadata:
     run: apiserver
   name: apiserver
 spec:
-  replicas: 4
+  replicas: 6
   selector:
     matchLabels:
       run: apiserver
