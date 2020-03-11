@@ -63,7 +63,7 @@ metadata:
     run: mongo
   name: mongo
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       run: mongo
