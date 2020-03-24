@@ -23,7 +23,7 @@ metadata:
     run: apiserver
   name: apiserver
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       run: apiserver
@@ -63,7 +63,7 @@ metadata:
     run: mongo
   name: mongo
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       run: mongo
