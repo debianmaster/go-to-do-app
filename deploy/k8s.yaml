@@ -122,6 +122,7 @@ spec:
       containers:
       - image: biqmind/todo-app
         name: todo-app
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
 ---
