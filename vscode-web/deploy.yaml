@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  name: code
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: code
+status:
+  loadBalancer: {}
+---
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: code
+  name: code
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: code
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: code
+    spec:
+      containers:
+      - env:
+        - name: PASSWORD
+          value: gtfer452
+        image: codercom/code-server
+        name: code
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}

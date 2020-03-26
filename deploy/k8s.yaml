@@ -14,7 +14,6 @@ spec:
 status:
   loadBalancer: {}
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -132,7 +131,13 @@ metadata:
   name: hw-ingress
 spec:
   rules:
-  - host: todo.127.0.0.1.nip.io
+  - host: todo-web.127.0.0.1.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: todo-app
+          servicePort: 3000
+  - host: todo-web.52.230.48.77.nip.io
     http:
       paths:
       - backend:
@@ -147,7 +152,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
-  storageClassName: example-nfs
+  storageClassName: default
   resources:
     requests:
       storage: 1Gi
