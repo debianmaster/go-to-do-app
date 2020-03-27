@@ -128,29 +128,16 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: hw-ingress-2
+  name: brand-new-ingress
 spec:
   rules:
-  - host: todo-web2.127.0.0.1.nip.io
+  - host: brand-new-ingress.127.0.0.1.nip.io
     http:
       paths:
       - backend:
           serviceName: todo-app
           servicePort: 3000
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: hw-ingress
-spec:
-  rules:
-  - host: todo-web.127.0.0.1.nip.io
-    http:
-      paths:
-      - backend:
-          serviceName: todo-app
-          servicePort: 3000
-  - host: todo-web.52.230.48.77.nip.io
+  - host: brand-new-ingress.52.230.48.77.nip.io
     http:
       paths:
       - backend:
