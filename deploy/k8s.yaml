@@ -21,9 +21,9 @@ metadata:
   creationTimestamp: null
   labels:
     run: apiserver
-  name: apiserver1
+  name: apiserver
 spec:
-  replicas: 6
+  replicas: 3
   selector:
     matchLabels:
       run: apiserver
