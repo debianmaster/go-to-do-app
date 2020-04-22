@@ -152,7 +152,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
-  storageClassName: default
   resources:
     requests:
       storage: 1Gi
