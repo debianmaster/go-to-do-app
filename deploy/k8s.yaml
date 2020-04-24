@@ -149,6 +149,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: image-data
 spec:
+  storageClassName: example-nfs
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
