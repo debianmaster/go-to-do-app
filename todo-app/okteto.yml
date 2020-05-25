@@ -1,7 +1,11 @@
 name: todo-app
-image: okteto/node:10
+image: node:current-alpine3.11
 command:
-- bash
+- sh
 workdir: /usr/src/app
 forward:
   - 3000:3000
+persistentVolume:
+  enabled: true
+  storageClass: example-nfs
+  size: 1Gi
