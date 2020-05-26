@@ -137,7 +137,7 @@ spec:
       - backend:
           serviceName: todo-app
           servicePort: 3000
-  - host: todo-web.aks.cape.sh
+  - host: todo-web.sg.cape.sh
     http:
       paths:
       - backend:
