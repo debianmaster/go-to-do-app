@@ -136,4 +136,16 @@ spec:
       - backend:
           serviceName: todo-app
           servicePort: 3000
-
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hw-ingress-2
+spec:
+  rules:
+  - host: todo-web2.127.0.0.1.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: todo-app
+          servicePort: 3000
